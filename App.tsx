@@ -18,6 +18,40 @@ import { DEFAULT_SETTINGS } from './constants';
 const App: React.FC = () => {
     const [isFirstVisit, setIsFirstVisit] = useState(false);
     const [showWelcome, setShowWelcome] = useState(false);
+    const [hasError, setHasError] = useState(false);
+
+    // Error boundary effect
+    useEffect(() => {
+        const handleError = (error: ErrorEvent) => {
+            console.error('Global error caught:', error);
+            setHasError(true);
+        };
+
+        window.addEventListener('error', handleError);
+        return () => window.removeEventListener('error', handleError);
+    }, []);
+
+    // If there's an error, show a fallback UI
+    if (hasError) {
+        return (
+            <div className="min-h-screen bg-base-100 flex items-center justify-center p-4">
+                <div className="text-center">
+                    <h1 className="text-2xl font-bold text-content-100 mb-4">
+                        Something went wrong
+                    </h1>
+                    <p className="text-content-200 mb-4">
+                        The app encountered an error. Please refresh the page to try again.
+                    </p>
+                    <button
+                        onClick={() => window.location.reload()}
+                        className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-blue-600"
+                    >
+                        Refresh Page
+                    </button>
+                </div>
+            </div>
+        );
+    }
     const [showSettings, setShowSettings] = useState(false);
     
     const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);

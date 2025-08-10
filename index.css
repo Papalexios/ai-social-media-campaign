@@ -1,0 +1,172 @@
+/* Base styles for the AI Campaign Strategist app */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0D1117;
+  color: #F0F6FC;
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #161B22;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #21262D;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8B949E;
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #0055FF;
+  outline-offset: 2px;
+}
+
+/* Loading animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Utility classes */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.5s ease-in-out;
+}
+
+/* Custom button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #0055FF 0%, #8A2BE2 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 85, 255, 0.3);
+}
+
+.btn-primary:disabled {
+  background: #21262D;
+  color: #8B949E;
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Card styles */
+.card {
+  background: #161B22;
+  border: 1px solid #21262D;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #0055FF;
+  box-shadow: 0 8px 32px rgba(0, 85, 255, 0.1);
+}
+
+/* Form styles */
+.form-input {
+  background: #0D1117;
+  border: 2px solid #21262D;
+  border-radius: 8px;
+  color: #F0F6FC;
+  padding: 12px 16px;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #0055FF;
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.1);
+}
+
+.form-input::placeholder {
+  color: #8B949E;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+  }
+  
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    background: white;
+  }
+}

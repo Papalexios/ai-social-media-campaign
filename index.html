@@ -48,17 +48,7 @@
         }
       }
     </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.1.1/",
-    "react": "https://esm.sh/react@^19.1.1",
-    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.13.0",
-    "openai": "https://esm.sh/openai@^4.52.7"
-  }
-}
-</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -88,51 +78,7 @@
 }
 </script>
 <link rel="stylesheet" href="/index.css">
-<script>
-  // Tiny smoke test trigger: add ?smoke=1 to URL
-  (async () => {
-    try {
-      const url = new URL(location.href);
-      if (url.searchParams.get('smoke') === '1') {
-        const mod = await import('./tests/smoke.test.ts');
-        mod.runSmoke?.();
-        console.info('Smoke tests executed.');
-      }
-    } catch (e) {
-      console.warn('Smoke test init failed', e);
-    }
-  })();
-  </script>
-<script>
-  // CSV test trigger: ?csv=1
-  (async () => {
-    try {
-      const url = new URL(location.href);
-      if (url.searchParams.get('csv') === '1') {
-        const mod = await import('./tests/csv.test.ts');
-        mod.runCsvTests?.();
-        console.info('CSV tests executed.');
-      }
-    } catch (e) {
-      console.warn('CSV test init failed', e);
-    }
-  })();
-</script>
-<script>
-  // Render smoke test trigger: ?render=1
-  (async () => {
-    try {
-      const url = new URL(location.href);
-      if (url.searchParams.get('render') === '1') {
-        const mod = await import('./tests/render.test.tsx');
-        mod.runRenderTest?.();
-        console.info('Render tests executed.');
-      }
-    } catch (e) {
-      console.warn('Render test init failed', e);
-    }
-  })();
-</script>
+
 </head>
   <body class="bg-base-100">
     <div id="root"></div>

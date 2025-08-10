@@ -94,11 +94,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ currentSettings, o
                             <p className="text-xs text-content-300 mt-2">
                                 E.g., `anthropic/claude-3-sonnet`, `mistralai/mistral-large`, etc. See OpenRouter docs for model IDs.
                             </p>
-                        <p className="text-xs text-content-300">
-                          Tip: Economy mode trims context and may be faster/cheaper. Premium uses richer context for highest quality.
-                        </p>
+                            <p className="text-xs text-content-300">
+                              Tip: Economy mode trims context and may be faster/cheaper. Premium uses richer context for highest quality.
+                            </p>
                         </div>
-                        {/* Performance Settings */}
+                    )}
+
+                    {/* Performance Settings */}
                         <div className="p-4 bg-base-300/50 rounded-lg border border-base-300">
                           <h3 className="text-lg font-semibold text-content-100 mb-3">Performance</h3>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -172,7 +174,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ currentSettings, o
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-content-2...
                               <label className="block text-sm font-medium text-content-200">Essence truncate (chars)</label>
                               <input
                                 type="number"
@@ -210,36 +211,40 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ currentSettings, o
                                 title="Chars per URL included for post generation context. Higher = richer but costs more."
                               />
                             </div>
-                {/* Guardrails */}
-                <div className="p-6 space-y-4">
-                  <h3 className="text-lg font-semibold text-content-100">Guardrails</h3>
-                  <div className="p-4 bg-base-300/50 rounded-lg border border-base-300">
-                    <label className="inline-flex items-center gap-2 text-sm text-content-200">
-                      <input
-                        type="checkbox"
-                        checked={!!settings.guardrails?.enforceOpenRouterAllowlist}
-                        onChange={(e) => setSettings(s => ({
-                          ...s,
-                          guardrails: { ...(s.guardrails || {}), enforceOpenRouterAllowlist: e.target.checked }
-                        }))}
-                      />
-                      Enforce OpenRouter Model Allowlist
-                    </label>
-                    <label className="block text-sm font-medium text-content-200 mt-3">Allowed Models (comma separated)</label>
-                    <input
-                      type="text"
-                      value={(settings.guardrails?.openRouterAllowlist || []).join(', ')}
-                      onChange={(e) => setSettings(s => ({
-                        ...s,
-                        guardrails: { ...(s.guardrails || {}), openRouterAllowlist: e.target.value.split(',').map(x => x.trim()).filter(Boolean) }
-                      }))}
-                      className="mt-1 w-full p-2 bg-base-100 border-2 border-base-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary text-content-100"
-                      placeholder="anthropic/claude-3-haiku-20240307, openai/gpt-4o-mini, ..."
-                    />
-                  </div>
-                </div>
-                    )}
-                </div>
+                          </div>
+                        </div>
+
+                        {/* Guardrails */}
+                        <div className="p-4 bg-base-300/50 rounded-lg border border-base-300">
+                          <h3 className="text-lg font-semibold text-content-100 mb-3">Guardrails</h3>
+                          <div className="space-y-4">
+                            <label className="inline-flex items-center gap-2 text-sm text-content-200">
+                              <input
+                                type="checkbox"
+                                checked={!!settings.guardrails?.enforceOpenRouterAllowlist}
+                                onChange={(e) => setSettings(s => ({
+                                  ...s,
+                                  guardrails: { ...(s.guardrails || {}), enforceOpenRouterAllowlist: e.target.checked }
+                                }))}
+                              />
+                              Enforce OpenRouter Model Allowlist
+                            </label>
+                            <div>
+                              <label className="block text-sm font-medium text-content-200 mb-2">Allowed Models (comma separated)</label>
+                              <input
+                                type="text"
+                                value={(settings.guardrails?.openRouterAllowlist || []).join(', ')}
+                                onChange={(e) => setSettings(s => ({
+                                  ...s,
+                                  guardrails: { ...(s.guardrails || {}), openRouterAllowlist: e.target.value.split(',').map(x => x.trim()).filter(Boolean) }
+                                }))}
+                                className="w-full p-2 bg-base-100 border-2 border-base-300 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-brand-primary text-content-100"
+                                placeholder="anthropic/claude-3-haiku-20240307, openai/gpt-4o-mini, ..."
+                              />
+                            </div>
+                          </div>
+                        </div>
+                    </div>
                 {/* Inline validation messages */}
                 <div className="px-6 pb-4 text-xs text-content-300">
                   {settings.performance?.concurrency !== undefined && settings.performance.concurrency < 1 && (

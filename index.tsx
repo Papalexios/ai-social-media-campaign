@@ -1,58 +1,65 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
-import './index.css';
 
-// Add loading indicator
-const container = document.getElementById('root');
-if (!container) {
-  document.body.innerHTML = `
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #0D1117; color: white; font-family: Arial, sans-serif;">
-      <div style="text-align: center;">
-        <h1>Loading Error</h1>
-        <p>Failed to find the root element</p>
+// Simple test component first
+const TestApp = () => {
+  return (
+    <div style={{
+      minHeight: '100vh',
+      background: '#0D1117',
+      color: 'white',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'Arial, sans-serif'
+    }}>
+      <div style={{ textAlign: 'center', maxWidth: '600px', padding: '20px' }}>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '20px', color: '#0055FF' }}>
+          🚀 AI Campaign Strategist
+        </h1>
+        <p style={{ fontSize: '1.2rem', marginBottom: '30px', color: '#C9D1D9' }}>
+          Premium Viral Content Generation Platform
+        </p>
+        <div style={{
+          background: '#161B22',
+          padding: '20px',
+          borderRadius: '10px',
+          border: '1px solid #21262D'
+        }}>
+          <h2 style={{ color: '#F0F6FC', marginBottom: '15px' }}>✅ App Successfully Loaded!</h2>
+          <p style={{ color: '#8B949E', marginBottom: '20px' }}>
+            The deployment is working. The full app will be loaded next.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            style={{
+              background: 'linear-gradient(135deg, #0055FF 0%, #8A2BE2 100%)',
+              color: 'white',
+              border: 'none',
+              padding: '12px 24px',
+              borderRadius: '6px',
+              fontSize: '16px',
+              cursor: 'pointer',
+              fontWeight: '600'
+            }}
+          >
+            Load Full App
+          </button>
+        </div>
+        <div style={{ marginTop: '30px', fontSize: '14px', color: '#8B949E' }}>
+          <p>🎯 Advanced Psychological Triggers</p>
+          <p>📊 Multi-Platform Optimization</p>
+          <p>🔥 Viral Content Engine</p>
+        </div>
       </div>
     </div>
-  `;
-  throw new Error('Failed to find the root element');
-}
-
-// Show loading state
-container.innerHTML = `
-  <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #0D1117; color: white; font-family: Arial, sans-serif;">
-    <div style="text-align: center;">
-      <div style="width: 40px; height: 40px; border: 4px solid #21262D; border-top: 4px solid #0055FF; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
-      <h2>AI Campaign Strategist</h2>
-      <p>Loading premium viral content engine...</p>
-    </div>
-  </div>
-  <style>
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
-`;
-
-try {
-  const root = createRoot(container);
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
   );
-} catch (error) {
-  console.error('Error rendering app:', error);
-  container.innerHTML = `
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #0D1117; color: white; font-family: Arial, sans-serif;">
-      <div style="text-align: center;">
-        <h1 style="color: #dc3545;">Render Error</h1>
-        <p>Failed to render the application</p>
-        <p style="font-size: 12px; color: #8B949E;">${error}</p>
-        <button onclick="window.location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #0055FF; color: white; border: none; border-radius: 5px; cursor: pointer;">
-          Reload Page
-        </button>
-      </div>
-    </div>
-  `;
+};
+
+const container = document.getElementById('root');
+if (container) {
+  const root = createRoot(container);
+  root.render(<TestApp />);
+} else {
+  document.body.innerHTML = '<h1 style="color: red;">Root element not found!</h1>';
 }

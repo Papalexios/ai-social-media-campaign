@@ -1,0 +1,6 @@
+{
+  "name": "AI Campaign Strategist",
+  "description": "A sophisticated, dual-mode AI campaign strategist that adapts its analysis based on user input, either performing real-time research on a topic or deep-synthesis of provided URLs to generate comprehensive marketing campaigns.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

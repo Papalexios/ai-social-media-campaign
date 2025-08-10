@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Campaign Strategist — AI Marketing Examples, Social Media Strategy Generator</title>
+    <meta name="description" content="Generate complete AI marketing campaigns with research-driven or URL analysis modes. Includes LinkedIn, X, Instagram posts, image prompts, viral score, and example campaigns for SEO." />
+    <meta property="og:title" content="AI Campaign Strategist — AI Marketing Examples & Social Media Strategy" />
+    <meta property="og:description" content="Create research-backed campaigns with psychological angles, A/B testing, and premium image prompts. Try our example campaigns and generate your own." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aistrategist.dev" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Campaign Strategist — AI Marketing Examples" />
+    <meta name="twitter:description" content="Generate campaigns, posts, and images across platforms. Explore example campaigns designed to rank for AI marketing searches." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#0055FF',
+              'brand-secondary': '#8A2BE2',
+              'base-100': '#0D1117',
+              'base-200': '#161B22',
+              'base-300': '#21262D',
+              'content-100': '#F0F6FC',
+              'content-200': '#C9D1D9',
+              'content-300': '#8B949E',
+            },
+            animation: {
+              'spin-slow': 'spin 3s linear infinite',
+              'fade-in': 'fadeIn 0.5s ease-in-out',
+              'slide-in-up': 'slideInUp 0.5s ease-in-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideInUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.13.0",
+    "openai": "https://esm.sh/openai@^4.52.7"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AI Campaign Strategist",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Generate complete AI marketing campaigns with research-driven or URL analysis modes, including social posts, image prompts, and strategic debrief.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "url": "https://aistrategist.dev"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI Campaign Strategist",
+  "url": "https://aistrategist.dev",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://aistrategist.dev/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+<script>
+  // Tiny smoke test trigger: add ?smoke=1 to URL
+  (async () => {
+    try {
+      const url = new URL(location.href);
+      if (url.searchParams.get('smoke') === '1') {
+        const mod = await import('./tests/smoke.test.ts');
+        mod.runSmoke?.();
+        console.info('Smoke tests executed.');
+      }
+    } catch (e) {
+      console.warn('Smoke test init failed', e);
+    }
+  })();
+  </script>
+<script>
+  // CSV test trigger: ?csv=1
+  (async () => {
+    try {
+      const url = new URL(location.href);
+      if (url.searchParams.get('csv') === '1') {
+        const mod = await import('./tests/csv.test.ts');
+        mod.runCsvTests?.();
+        console.info('CSV tests executed.');
+      }
+    } catch (e) {
+      console.warn('CSV test init failed', e);
+    }
+  })();
+</script>
+<script>
+  // Render smoke test trigger: ?render=1
+  (async () => {
+    try {
+      const url = new URL(location.href);
+      if (url.searchParams.get('render') === '1') {
+        const mod = await import('./tests/render.test.tsx');
+        mod.runRenderTest?.();
+        console.info('Render tests executed.');
+      }
+    } catch (e) {
+      console.warn('Render test init failed', e);
+    }
+  })();
+</script>
+</head>
+  <body class="bg-base-100">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
